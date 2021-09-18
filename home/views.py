@@ -1,16 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import tweepy
+from how_to.models import HTModel
+from walk_through.models import WKModel
+from django.utils import timezone
 
 def home(request):
 
-    # context = tweet_card()
     if request.method == 'GET':
         context = tweet_card()
 
-   
+        ht_posts = HTModel.objects.filter(created_date__lte=timezone.now()).order_by('created_date')[:5]
+        wk_posts = WKModel.objects.filter(created_date__lte=timezone.now()).order_by('created_date')[:5]
 
-    return render(request, 'home.html', {'context': context})
+    return render(request, 'home.html', {'context': context, 'ht_posts': ht_posts, 'wk_posts': wk_posts})
 
 def tweet_card():
     
@@ -22,7 +25,7 @@ def tweet_card():
     auth.set_access_token(access_key, access_secret)
     api = tweepy.API(auth)
     
-    tweets = api.search(q="cybersecurity", lang="en", count=5)
+    tweets = api.search(q="cybersecurity", lang="en", count=5, result_type='popular')
     
     tweet_list = []
     for index,tweet in enumerate(tweets):

@@ -7,11 +7,10 @@
     <h1><a href="/">How To's</a></h1>
 </header>
 <div class="bg-light">
-{% for post in posts %}
+{% for post in ht_posts %}
     <article>
-        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.summary }}</a></h2>
         <time>created: {{ post.created_date }}</time>
-        <p>{{ post.text|linebreaksbr }}</p>
   
     </article>
 {% endfor %}

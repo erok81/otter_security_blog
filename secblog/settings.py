@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'how_to.apps.HowToConfig',
     'walk_through.apps.WalkThroughConfig',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / 'media'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+SUMMERNOTE_THEME = 'bs4' 
+DATE_INPUT_FORMATS = ['%m-%d-%Y']

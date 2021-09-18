@@ -1,5 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
- Walkthrough
- {{ request.path }}
+
+<header>
+    <h1><a href="/">Walkthrough</a></h1>
+</header>
+<div class="bg-light">
+{% for post in wk_posts %}
+    <article>
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.summary }}</a></h2>
+        <time>created: {{ post.created_date }}</time>
+  
+    </article>
+{% endfor %}
+</div>
+
+
  {% endblock %}

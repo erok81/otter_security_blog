@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+# TODO this page should only show date, title, summary
+
+<header>
+    <h1><a href="/">How To's</a></h1>
+</header>
+<div class="bg-light">
+{% for post in posts %}
+    <article>
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        <time>created: {{ post.created_date }}</time>
+        <p>{{ post.text|linebreaksbr }}</p>
+  
+    </article>
+{% endfor %}
+</div>
+
+ {% endblock %}
+

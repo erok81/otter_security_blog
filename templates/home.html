@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block content %}
+
+<head>
+
+    {% load static %}
+</head>
+
+<div class="container-fluid row justify-content-center">
+
+    <h2 class="pb-2 border-bottom" style="color: rgb(38, 252, 0);">Welcome to Otter Security</h2>
+
+
+
+    <div class="row g-4 py-2 row-cols-1 row-cols-lg-3 justify-content-center">
+
+
+
+        <div class="card bg-dark text-white" style="width: 25rem; border-color: rgb(38, 252, 0); border-radius: 5%;">
+            <div class="card-body">
+                <h5 class="card-header pb-2 border-bottom">How To's</h5>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-dark text-white">An item</li>
+                    <li class="list-group-item bg-dark text-white">A second item</li>
+                    <li class="list-group-item bg-dark text-white">A third item</li>
+                    <li class="list-group-item bg-dark text-white">An item</li>
+                    <li class="list-group-item bg-dark text-white">A second item</li>
+                    <li class="list-group-item bg-dark text-white">A third item</li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <a class="btn btn-outline-info" href="{% url 'how_to' %}" role="button">More...</a>
+
+            </div>
+        </div>
+
+        <br>
+  
+
+        <div class="card bg-dark text-white" style="width: 45rem; border-color: rgb(38, 252, 0); border-radius: 5%;">
+
+            <div class="card-body">
+                <h5 class="card-header pb-2 border-bottom">New CyberSec Tweets</h5>
+                <ul class="list-group list-group-flush">
+                    {% for tweet in context %}
+                    <li class="list-group-item bg-dark text-white">
+                        
+                        <a href={{tweet.url}} target="_blank"> {{ tweet.username}}</a>{{ tweet.text}} <br>
+                        
+                
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- <div class="card-body">
+
+            </div> -->
+        </div>
+    
+
+        <br>
+ 
+
+        <div class="card bg-dark text-white" style="width: 25rem; border-color: rgb(38, 252, 0); border-radius: 5%;">
+            <div class="card-body">
+                <h5 class="card-header pb-2 border-bottom">Walk Throughs</h5>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-dark text-white">An item</li>
+                    <li class="list-group-item bg-dark text-white">A second item</li>
+                    <li class="list-group-item bg-dark text-white">A third item</li>
+                    <li class="list-group-item bg-dark text-white">An item</li>
+                    <li class="list-group-item bg-dark text-white">A second item</li>
+                    <li class="list-group-item bg-dark text-white">A third item</li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <a class="btn btn-outline-info" href="{% url 'walk_through' %}" role="button">More...</a>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="container-fluid row justify-content-center">
+        
+        <div class="card bg-dark text-white row justify-content-center" style="width: 35rem; height: 20rem; border-color: rgb(38, 252, 0); border-radius: 5%;">
+     
+           <img src="{% static 'images/combined-white.svg' %}" width="250" height="250" alt="otter image">
+        
+           <div class="card-footer text-muted row justify-content-center">
+            <p align="center">contact: <a href='mailto:the.otter@otter-security.com'>the.otter@otter-security.com</a></p>
+          </div>
+        </div>
+
+    </div> 
+
+</div>
+
+
+
+   {% endblock %}

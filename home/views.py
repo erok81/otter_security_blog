@@ -4,6 +4,7 @@ import tweepy
 from how_to.models import HTModel
 from walk_through.models import WKModel
 from django.utils import timezone
+from datetime import datetime
 
 def home(request):
 
@@ -12,8 +13,10 @@ def home(request):
 
         ht_posts = HTModel.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:5]
         wk_posts = WKModel.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:5]
+        ht_days = ht_diff_days()
+        wk_days = wk_diff_days()
 
-    return render(request, 'home.html', {'context': context, 'ht_posts': ht_posts, 'wk_posts': wk_posts})
+    return render(request, 'home.html', {'context': context, 'ht_posts': ht_posts, 'wk_posts': wk_posts, 'ht_days': ht_days, 'wk_days': wk_days})
 
 def tweet_card():
     
@@ -38,5 +41,31 @@ def tweet_card():
 
     return tweet_list
 
+def ht_diff_days():
+
+    today = datetime.now(timezone.utc)
+    last_created = HTModel.objects.all().last().created_date
+
+    diff = abs(today - last_created).days
+
+    if diff == 0:
+        return 'today'
+    elif diff == 1:
+        return '1 day ago'
+    else:
+        return f'{diff} days ago'
 
 
+def wk_diff_days():
+
+    today = datetime.now(timezone.utc)
+    last_created = WKModel.objects.all().last().created_date
+
+    diff = abs(today - last_created).days
+
+    if diff == 0:
+        return 'today'
+    elif diff == 1:
+        return '1 day ago'
+    else:
+        return f'{diff} days ago'

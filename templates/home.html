@@ -19,7 +19,7 @@
 
                     <div class="list-group">
                         {% for title in ht_posts %}
-                        <a href="{% url 'post_detail' pk=title.pk %}" class="list-group-item list-group-item-action card bg-dark text-white">{{title.created_date|date:"m-d-Y"}} {{title.title}}</a>
+                        <a href="{% url 'ht_post_detail' pk=title.pk %}" class="list-group-item list-group-item-action card bg-dark text-white">{{title.created_date|date:"m-d-Y"}} {{title.title}}</a>
                         {% endfor %}
             
                     </div>                  
@@ -63,7 +63,7 @@
 
                     <div class="list-group">
                         {% for title in wk_posts %}
-                        <a href="{% url 'post_detail' pk=title.pk %}" class="list-group-item list-group-item-action card bg-dark text-white">{{title.created_date|date:"m-d-Y"}} {{title.title}}</a>
+                        <a href="{% url 'wk_post_detail' pk=title.pk %}" class="list-group-item list-group-item-action card bg-dark text-white">{{title.created_date|date:"m-d-Y"}} {{title.title}}</a>
                         {% endfor %}
             
                     </div>                  

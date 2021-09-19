@@ -1,18 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <article class="post">
-        {% if post.created_date %}
-            <time class="date">
-                {{ post.created_date }}
-            </time>
-        {% endif %}
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+<div class="jumbotron bg-info text-white">
+    <div class="container">
+      <h1 class="display-4">{{ht_posts.title|safe}}</h1>
+      <h4>{{ht_posts.created_date|safe}} Written by: {{ht_posts.author}}</h4> 
+     <br>
+    </div>
+  </div>
+  <div class="jumbotron bg-dark text-white" style="padding: 20px;">
 
-        <!-- {% if post.image.url %}
-            <img src="{{ post.image.url }}" class="card-img-top img-fluid" alt="{{ post.title }}">
-        {% endif %} -->
+{{ht_posts.text|safe}}
 
-    </article>
+</div>
+
 {% endblock %}

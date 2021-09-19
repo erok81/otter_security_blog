@@ -1,18 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
+    <div class="jumbotron bg-info text-white">
+        <div class="container">
+            <h1 class="display-4">Walkthroughs</h1>
+            <br></div>
+        </div>
+        <div class="jumbotron bg-dark text-white" style="padding: 20px;">
+            <br>
+                {% for post in wk_posts %}
 
-<header>
-    <h1><a href="/">Walkthrough</a></h1>
-</header>
-<div class="bg-light">
-{% for post in wk_posts %}
-    <article>
-        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.summary }}</a></h2>
-        <time>created: {{ post.created_date }}</time>
-  
-    </article>
-{% endfor %}
-</div>
+                    <time>created:
+                        {{ post.created_date|safe }}</time>
+                    <h4>Title:
+                        <a href="{% url 'wk_post_detail' pk=post.pk %}">{{ post.title|safe }}</a>
+                    </h2>
+                    <h4>Summary:
+                        {{ post.summary|safe }}</h4>
+                    <br>
+                        <br>
+                        {% endfor %}
+                    </div>
+                </div>
 
-
- {% endblock %}
+            {% endblock %}

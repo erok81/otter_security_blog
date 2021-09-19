@@ -10,8 +10,8 @@ def home(request):
     if request.method == 'GET':
         context = tweet_card()
 
-        ht_posts = HTModel.objects.filter(created_date__lte=timezone.now()).order_by('created_date')[:5]
-        wk_posts = WKModel.objects.filter(created_date__lte=timezone.now()).order_by('created_date')[:5]
+        ht_posts = HTModel.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:5]
+        wk_posts = WKModel.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:5]
 
     return render(request, 'home.html', {'context': context, 'ht_posts': ht_posts, 'wk_posts': wk_posts})
 

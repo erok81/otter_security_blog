@@ -1,18 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
-# TODO this page should only show date, title, summary
 
-<header>
-    <h1><a href="/">How To's</a></h1>
-</header>
-<div class="bg-light">
+<div class="jumbotron bg-info text-white">
+    <div class="container">
+      <h1 class="display-4">How To's</h1>
+     <br>
+    </div>
+  </div>
+  <div class="jumbotron bg-dark text-white" style="padding: 20px;">
+
+<br>
 {% for post in ht_posts %}
-    <article>
-        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.summary }}</a></h2>
-        <time>created: {{ post.created_date }}</time>
-  
-    </article>
+        <div>
+        <time>created: {{ post.created_date|safe }}</time> 
+        <h4>Title: <a href="{% url 'ht_post_detail' pk=post.pk %}">{{ post.title|safe }}</a></h4>
+        <h4>Summary: {{ post.summary|safe }}</h4>
+        
+    </div>
+    <br>
+    <br>
+   
+
 {% endfor %}
 </div>
 

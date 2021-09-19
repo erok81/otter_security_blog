@@ -8,7 +8,7 @@ from . import views
 urlpatterns = [
     path('', views.walk_through, name='walk_through'),
     #url(r'summernote/', include('django_summernote.urls')),
-    path('post/<int:pk>/', views.post_detail, name='post_detail'),
+    path('wk_post/<int:pk>/', views.wk_post_detail, name='wk_post_detail'),
 ]
 
 if settings.DEBUG:

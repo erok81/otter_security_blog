@@ -12,8 +12,9 @@ def how_to(request):
     return render(request, "how_to.html", {'ht_posts': ht_posts})
 
 
-def post_detail(request, pk):
+def ht_post_detail(request, pk):
 
     ht_posts = get_object_or_404(HTModel, pk=pk) #this was Post > HTModel
 
-    return render(request, 'post_detail.html', {'ht_posts': ht_posts})
+    return render(request, 'ht_post_detail.html', {'ht_posts': ht_posts})
+   

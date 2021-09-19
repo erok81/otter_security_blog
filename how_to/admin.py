@@ -7,3 +7,6 @@ class HTModelAdmin(SummernoteModelAdmin):
     summernote_fields = '__all__'
 
 admin.site.register(HTModel, HTModelAdmin)
+
+
+

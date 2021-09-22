@@ -20,16 +20,14 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
              
-             
-            <li class="nav-item">
-                <a {% if '/walkthrough/' == request.path %} class="nav-link active" {% else %} class="nav-link" {% endif %}" href="{% url 'walk_through' %}">Walkthroughs</a>
-            </li>
+              <li class="nav-item">
+                  <a {% if '/how-to/' == request.path %} class="nav-link active" {% else %} class="nav-link" {% endif %}" href="{% url 'how_to' %}">How To's</a>
+              </li>
 
-            <li class="nav-item">
-                <a {% if '/how-to/' == request.path %} class="nav-link active" {% else %} class="nav-link" {% endif %}" href="{% url 'how_to' %}">How To's</a>
-            </li>
-              
-            
+              <li class="nav-item">
+                  <a {% if '/walkthrough/' == request.path %} class="nav-link active" {% else %} class="nav-link" {% endif %}" href="{% url 'walk_through' %}">Walkthroughs</a>
+              </li>
+
             </ul>
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Coming Soon..." aria-label="Search">

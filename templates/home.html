@@ -1,100 +1,93 @@
 {% extends "base.html" %}
 {% block content %}
 
-<head>
+    <head>
 
-    {% load static %}
-</head>
+        {% load static %}
+    </head>
 
-<div class="container-fluid row justify-content-center">
+    <div class="container-fluid row justify-content-center">
 
-    <h2 class="pb-2 border-bottom" style="color: rgb(38, 252, 0);">Welcome to Otter Security</h2>   
+        <h2 class="pb-2 border-bottom" style="color: rgb(38, 252, 0);">Welcome to Otter Security</h2>
 
 
-    <div class="row g-4 py-2 row-cols-1 row-cols-lg-3 justify-content-center">
+        <div class="row g-4 py-2 row-cols-1 row-cols-lg-3 justify-content-center">
 
-        <div class="card bg-dark text-white" style="width: 25rem; border-color: rgb(38, 252, 0); border-radius: 5%;">
-            <div class="card-body">
-                <h3 class="card-header pb-2 border-bottom">How To's</h5>  
+            <div class="card bg-dark text-white" style="width: 25rem; border-color: rgb(38, 252, 0); border-radius: 5%;">
+                <div class="card-body">
+                    <h3 class="card-header pb-2 border-bottom">How To's</h5>
 
                     <div class="list-group">
                         {% for title in ht_posts %}
-                        <a href="{% url 'ht_post_detail' pk=title.pk %}" class="list-group-item list-group-item-action card bg-dark text-white">{{title.created_date|date:"m-d-Y"}} {{title.title}}</a>
+                            <a href="{% url 'ht_post_detail' pk=title.pk %}" class="list-group-item list-group-item-action card bg-dark text-white">{{ title.created_date|date:"m-d-Y" }}
+                                {{ title.title }}</a>
                         {% endfor %}
-            
-                    </div>                  
-            </div>
-            <div class="card-footer"><a class="btn btn-outline-info" href="{% url 'how_to' %}" role="button">More...</a></div>
-            <div class="card-footer text-muted">
-                <small>last updated {{ht_days}}</small><br>
-                
-            </div> 
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-outline-info" href="{% url 'how_to' %}" role="button">More...</a>
+                </div>
+                <div class="card-footer text-muted">
+                    <small>last updated
+                        {{ ht_days }}</small>
+                    <br></div>
+                </div>
+                <br>
+                    <div class="card bg-dark text-white" style="width: 45rem; border-color: rgb(38, 252, 0); border-radius: 5%;">
 
-        </div>
+                        <div class="card-body">
+                            <h3 class="card-header pb-2 border-bottom">Top #CyberSec Tweets</h5>
+                            <ul class="list-group list-group-flush">
+                                {% for tweet in context %}
+                                    <li class="list-group-item bg-dark text-white">
 
-        <br>
-  
-
-        <div class="card bg-dark text-white" style="width: 45rem; border-color: rgb(38, 252, 0); border-radius: 5%;">
-
-            <div class="card-body">
-                <h3 class="card-header pb-2 border-bottom">Top #CyberSec Tweets</h5>
-                <ul class="list-group list-group-flush">
-                    {% for tweet in context %}
-                    <li class="list-group-item bg-dark text-white">
-                        
-                        <a href={{tweet.url}} target="_blank"> {{ tweet.username}}</a>{{ tweet.text}} <br>
-                
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-
-        </div>
-    
-
-        <br>
- 
-
-        <div class="card bg-dark text-white" style="width: 25rem; border-color: rgb(38, 252, 0); border-radius: 5%;">
-            <div class="card-body">
-                <h3 class="card-header pb-2 border-bottom">Walk Throughs</h5>
-                    
-
-                    <div class="list-group">
-                        {% for title in wk_posts %}
-                        <a href="{% url 'wk_post_detail' pk=title.pk %}" class="list-group-item list-group-item-action card bg-dark text-white">{{title.created_date|date:"m-d-Y"}} {{title.title}}</a>
-                        {% endfor %}
-            
-                    </div>                  
-            </div>
-            <div class="card-footer"><a class="btn btn-outline-info" href="{% url 'walk_through' %}" role="button">More...</a></div>
-            <div class="card-footer text-muted">
-                <small>last updated {{wk_days}}</small><br>
-                
-            </div> 
-        </div>
+                                        <a href={{ tweet.url }} target="_blank">
+                                            {{ tweet.username }}</a>
+                                        {{ tweet.text }}
+                                        <br></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <br>
+                            <div class="card bg-dark text-white" style="width: 25rem; border-color: rgb(38, 252, 0); border-radius: 5%;">
+                                <div class="card-body">
+                                    <h3 class="card-header pb-2 border-bottom">Walk Throughs</h5>
 
 
+                                    <div class="list-group">
+                                        {% for title in wk_posts %}
+                                            <a href="{% url 'wk_post_detail' pk=title.pk %}" class="list-group-item list-group-item-action card bg-dark text-white">{{ title.created_date|date:"m-d-Y" }}
+                                                {{ title.title }}</a>
+                                        {% endfor %}
 
-    </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <a class="btn btn-outline-info" href="{% url 'walk_through' %}" role="button">More...</a>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <small>last updated
+                                        {{ wk_days }}</small>
+                                    <br></div>
+                                </div>
+                            </div>
+                            <div class="container-fluid row justify-content-center">
+
+                                <div class="card bg-dark text-white row justify-content-center" style="width: 35rem; height: 20rem; border-color: rgb(38, 252, 0); border-radius: 5%;">
+
+                                    <img src="{% static 'images/combined-white.svg' %}" width="250" height="250" alt="otter image">
+
+                                        <div class="card-footer text-muted row justify-content-center">
+                                            <p align="center">contact:
+                                                <a href='mailto:the.otter@otter-security.com'>the.otter@otter-security.com</a>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
 
 
-    <div class="container-fluid row justify-content-center">
-        
-        <div class="card bg-dark text-white row justify-content-center" style="width: 35rem; height: 20rem; border-color: rgb(38, 252, 0); border-radius: 5%;">
-     
-           <img src="{% static 'images/combined-white.svg' %}" width="250" height="250" alt="otter image">
-        
-           <div class="card-footer text-muted row justify-content-center">
-            <p align="center">contact: <a href='mailto:the.otter@otter-security.com'>the.otter@otter-security.com</a></p>
-          </div>
-        </div>
-
-    </div> 
-
-</div>
-
-
-
-   {% endblock %}
+                        {% endblock %}

@@ -1,15 +1,19 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 import tweepy
 from how_to.models import HTModel
 from walk_through.models import WKModel
 from django.utils import timezone
 from datetime import datetime
+import os
 
 def home(request):
 
     if request.method == 'GET':
         context = tweet_card()
+        if context == None:
+            context = [{'text':'twitter unavailable'},]
+        else:
+            pass
 
         ht_posts = HTModel.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:5]
         wk_posts = WKModel.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:5]
@@ -19,18 +23,22 @@ def home(request):
     return render(request, 'home.html', {'context': context, 'ht_posts': ht_posts, 'wk_posts': wk_posts, 'ht_days': ht_days, 'wk_days': wk_days})
 
 def tweet_card():
-    
-    consumer_key = 'yV3IcqIiqqz67kkzmiR81tCrM'
-    consumer_secret = '5MJskrBmT8RsZm5F0ENwPurzPQ4WzWgyETF5w2Raih2f2dwjPW'
-    access_key = '148624063-AEDIlTslSiWWmQWoclSQJ9ytAo2m9IICOSyakyyH'
-    access_secret = 'vtGsBJUiwqlFwVSKny2if2RlMeFiFQISO0vibNOdFaski'
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_key, access_secret)
+
+    CONSUMER_KEY = os.getenv('CONSUMER_KEY')
+    CONSUMER_SECRET = os.getenv('CONSUMER_SECRET')
+    ACCESS_KEY = os.getenv('ACCESS_KEY')
+    ACCESS_SECRET = os.getenv('ACCESS_SECRET')
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
     api = tweepy.API(auth)
-    
-    tweets = api.search(q="cybersecurity", lang="en", count=5, result_type='popular')
-    
     tweet_list = []
+
+    try:
+        tweets = api.search(q="cybersecurity", lang="en", count=5, result_type='popular')
+    except:
+        return
+    
+  
     for index,tweet in enumerate(tweets):
         tweet_dict = {}
         tweet_dict['username'] = '@' + tweets[index].user._json['screen_name'] + ':'
@@ -69,3 +77,4 @@ def wk_diff_days():
         return '1 day ago'
     else:
         return f'{diff} days ago'
+        

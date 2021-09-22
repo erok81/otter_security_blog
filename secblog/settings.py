@@ -16,16 +16,28 @@ from django.contrib import admin
 # import settings and static first
 from django.conf import settings
 from django.conf.urls.static import static
+import os
+from dotenv import load_dotenv
+
+#env = os.environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    load_dotenv(dotenv_file)
+
+# UPDATE secret key
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7vahzy=j22c=)8w73_)&_d!in3lobd+1gh(n34=z5$lwq(u^&v'
+#SECRET_KEY = 'django-insecure-7vahzy=j22c=)8w73_)&_d!in3lobd+1gh(n34=z5$lwq(u^&v'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

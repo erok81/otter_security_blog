@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="jumbotron bg-info text-white">
+<br>
+<br>
+<div class="jumbotron container rounded bg-info text-white">
     <div class="container">
       <h1 class="display-4">{{wk_posts.title|safe}}</h1>
-      <h4>{{wk_posts.created_date|safe}} Written by: {{wk_posts.author}}</h4> 
+      <h4>{{wk_posts.created_date|date:"m-d-Y"}} Written by: {{wk_posts.author}}</h4> 
      <br>
     </div>
   </div>
-  <div class="jumbotron bg-dark text-white" style="padding: 20px;">
+  <div class="jumbotron bg-dark container text-white" style="padding: 20px;">
 
 {{wk_posts.text|safe}}
 

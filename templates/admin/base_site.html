@@ -1,0 +1,22 @@
+
+{% extends 'admin/base.html' %}
+
+{% load static %}
+{% block branding %}
+    <h1 id="head">
+            <a class="navbar-brand" href="{% url 'home' %}">Otter Sec</a>
+
+        otter-admin
+    </h1>
+{% endblock %}
+
+{% block title %}jackalope admin{% endblock %}
+
+{% block extrahead %}
+    <title>otter-admin</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+{% endblock %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock %}

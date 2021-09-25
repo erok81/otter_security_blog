@@ -15,6 +15,5 @@ def walk_through(request):
 def wk_post_detail(request, pk):
     #this is my problem page
     wk_posts = get_object_or_404(WKModel, pk=pk) #this was Post > HTModel
-    print(wk_posts)
 
     return render(request, 'wk_post_detail.html', {'wk_posts': wk_posts})

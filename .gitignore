@@ -8,3 +8,4 @@ media
 staticfiles
 db.sqlite3
 .env
+settings.py

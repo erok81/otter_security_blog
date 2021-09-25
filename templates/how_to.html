@@ -1,19 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-<div class="jumbotron bg-info text-white">
+<br>
+<br>
+<div class="jumbotron container rounded bg-info text-white">
     <div class="container">
       <h1 class="display-4">How To's</h1>
      <br>
     </div>
   </div>
-  <div class="jumbotron bg-dark text-white" style="padding: 20px;">
+  <div class="jumbotron bg-dark container text-white" style="padding: 20px;">
 
 <br>
 {% for post in ht_posts %}
         <div>
-        <time>created: {{ post.created_date|safe }}</time> 
+        <time>created: {{ post.created_date|date:"m-d-Y" }}</time> 
         <h4>Title: <a href="{% url 'ht_post_detail' pk=post.pk %}">{{ post.title|safe }}</a></h4>
         <h4>Summary: {{ post.summary|safe }}</h4>
         

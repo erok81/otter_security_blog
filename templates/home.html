@@ -8,14 +8,14 @@
 
     <div class="container-fluid row justify-content-center">
 
-        <h2 class="pb-2 border-bottom" style="color: rgb(38, 252, 0);">Welcome to Otter Security</h2>
+        <h2 class="pb-2 border-bottom" style="color: rgb(38, 252, 0);">welcome to otter security</h2>
 
 
         <div class="row g-4 py-2 row-cols-1 row-cols-lg-3 justify-content-center">
 
             <div class="card bg-dark text-white" style="width: 25rem; border-color: rgb(38, 252, 0); border-radius: 5%;">
                 <div class="card-body">
-                    <h3 class="card-header pb-2 border-bottom">How To's</h5>
+                    <h3 class="card-header pb-2 border-bottom">how to's</h5>
 
                     <div class="list-group">
                         {% for title in ht_posts %}
@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-outline-info" href="{% url 'how_to' %}" role="button">More...</a>
+                    <a class="btn btn-outline-info" href="{% url 'how_to' %}" role="button">more...</a>
                 </div>
                 <div class="card-footer text-muted">
                     <small>last updated
@@ -36,7 +36,7 @@
                     <div class="card bg-dark text-white" style="width: 45rem; border-color: rgb(38, 252, 0); border-radius: 5%;">
 
                         <div class="card-body">
-                            <h3 class="card-header pb-2 border-bottom">Top #CyberSec Tweets</h5>
+                            <h3 class="card-header pb-2 border-bottom">top #cybersec tweets</h5>
                             <ul class="list-group list-group-flush">
                                 {% for tweet in context %}
                                     <li class="list-group-item bg-dark text-white">
@@ -52,7 +52,7 @@
                         <br>
                             <div class="card bg-dark text-white" style="width: 25rem; border-color: rgb(38, 252, 0); border-radius: 5%;">
                                 <div class="card-body">
-                                    <h3 class="card-header pb-2 border-bottom">Walk Throughs</h5>
+                                    <h3 class="card-header pb-2 border-bottom">ctf walk throughs</h5>
 
 
                                     <div class="list-group">
@@ -64,7 +64,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <a class="btn btn-outline-info" href="{% url 'walk_through' %}" role="button">More...</a>
+                                    <a class="btn btn-outline-info" href="{% url 'walk_through' %}" role="button">more...</a>
                                 </div>
                                 <div class="card-footer text-muted">
                                     <small>last updated
@@ -78,11 +78,11 @@
 
                                     <img src="{% static 'images/combined-white.svg' %}" width="250" height="250" alt="otter image">
 
-                                        <div class="card-footer text-muted row justify-content-center">
-                                            <p align="center">contact:
+                                       
+                                            <p align="center" class="text-muted">contact:
                                                 <a href='mailto:the.otter@otter-security.com'>the.otter@otter-security.com</a>
                                             </p>
-                                        </div>
+                                       
                                     </div>
 
                                 </div>

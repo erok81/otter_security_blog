@@ -34,6 +34,10 @@
                   <a {% if '/walkthrough/' == request.path %} class="nav-link active" {% else %} class="nav-link" {% endif %}" href="{% url 'walk_through' %}">Walkthroughs</a>
               </li>
 
+              <li class="nav-item">
+                <a {% if '/coder/' == request.path %} class="nav-link active" {% else %} class="nav-link" {% endif %}" href="{% url 'codeify' %}">Decode/Encode</a>
+            </li>
+
             </ul>
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Coming Soon..." aria-label="Search">

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<br>
+<br>
+<div class="jumbotron container rounded bg-info text-white">
+    <div class="container">
+      <h1 class="display-4">Decode/Encode</h1>
+
+    
+    </div>
+  </div>
+  <div class="jumbotron container bg-dark text-white" style="padding: 20px;">
+
+
+
+
+
+    <form method="POST" enctype="multipart/form-data" autocomplete="off">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+
+
+    
+      <button type="submit" class="btn btn-outline-info">Convert</button>
+
+      <a class="btn btn-outline-info" href="{{ request.get_full_path }}">Start Over</a>
+    </form>
+    <div class="jumbotron container" style="padding: 20px;">
+  
+
+        {{resulted}}
+        </div>
+
+    </div>
+
+
+
+
+{% endblock %}
+
+
